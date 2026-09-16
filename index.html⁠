@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sombrados</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0b0f19; color: #f3f4f6; font-family: sans-serif; display: flex; height: 100vh; overflow: hidden; }
+        .sidebar { width: 220px; background: #111827; border-right: 1px solid #1f2937; display: flex; flex-direction: column; justify-content: space-between; padding: 15px; }
+        .logo { font-size: 1.2rem; font-weight: bold; color: #38bdf8; text-align: center; margin-bottom: 20px; }
+        .menu { display: flex; flex-direction: column; gap: 8px; }
+        .item { padding: 12px; border-radius: 6px; background: #1f2937; color: #9ca3af; cursor: pointer; font-size: 0.95rem; }
+        .item:hover, .item.active { background: #374151; color: #fff; border-left: 4px solid #38bdf8; }
+        .main { flex-grow: 1; display: flex; flex-direction: column; background: #0b0f19; overflow-y: auto; }
+        header { padding: 15px; border-bottom: 1px solid #1f2937; background: #111827; font-weight: bold; color: #38bdf8; font-size: 1.1rem; }
+        .content { padding: 20px; }
+        .tab { display: none; }
+        .tab.active { display: block; }
+        .card { background: #1f2937; padding: 20px; border-radius: 8px; margin-bottom: 15px; }
+        footer { text-align: center; color: #6b7280; font-size: 0.75rem; padding-top: 8px; border-top: 1px solid #1f2937; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">SOMBRADOS</div>
+            <div class="menu">
+                <div class="item active" onclick="go(0,this)">🏠 Ana Sayfa</div>
+                <div class="item" onclick="go(1,this)">👥 Kadro</div>
+                <div class="item" onclick="go(2,this)">👕 Forma</div>
+            </div>
+        </div>
+        <footer>Telif © 2026 Sombrados</footer>
+    </div>
+    <div class="main">
+        <header id="h">Ana Sayfa</header>
+        <div class="content">
+            <div class="tab active card">
+                <h2>Hoş Geldin Sombrados!</h2>
+                <p style="margin-top:10px; color:#9ca3af;">Sol menüden Kadro ve Forma sekmelerine geçiş yapabilirsin.</p>
+            </div>
+            <div class="tab card">
+                <h2>Ekip Kadrosu</h2>
+                <p style="margin-top:10px; color:#9ca3af;">• Lider: Sombrados<br>• Strateji: AI Asistan</p>
+            </div>
+            <div class="tab card">
+                <h2>Forma Tasarımları</h2>
+                <p style="margin-top:10px; color:#9ca3af;">Sezon 2026 özel formalar burada.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function go(i,el){
+            let t=document.querySelectorAll(".tab"),m=document.querySelectorAll(".item"),h=["Ana Sayfa","Kadro","Forma"];
+            t.forEach(x=>x.classList.remove("active"));
+            m.forEach(x=>x.classList.remove("active"));
+            t[i].classList.add("active");
+            el.classList.add("active");
+            document.getElementById("h").innerText=h[i];
+        }
+    </script>
+</body>
+</html>
